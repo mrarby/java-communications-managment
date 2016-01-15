@@ -1,0 +1,22 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+sourceCompatibility = 1.8
+version = '1.0'
+
+repositories {
+	mavenCentral()
+}
+
+jar {
+	baseName = 'client-server'
+	version = "${version}"
+	
+	into ('/')
+	from configurations.runtime, sourceSets.main.java.srcDirs
+	
+	manifest {
+		attributes 'Implementation-Title' : 'Socket IO Dev',
+				   'Implementation-Version' : version
+	}
+}
